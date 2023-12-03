@@ -32,6 +32,7 @@ struct ElementRow: View {
                 Text(folder.name ?? "Unnamed")
                     .font(.headline)
             }
+            Text("\(folder.itemsInThisFolder.count) items")
         }
     }
 }
@@ -53,7 +54,6 @@ struct FolderView: View {
                 ForEach(folders) { folder in
                     NavigationLink(destination: DetailView(parentFolder: folder)) {
                         ElementRow(folder: folder)
-                        Text("\(folder.itemsInThisFolder.count) items")
                     }
                 }
                 .onDelete(perform: deleteItems)

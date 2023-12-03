@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0A8584F2B1C75CE00FC8681 /* MobileNetV2 Int8 LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8584E2B1C75CE00FC8681 /* MobileNetV2 Int8 LUT.mlmodel */; };
+		C0A858532B1CE10900FC8681 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A858522B1CE10900FC8681 /* Extensions.swift */; };
 		C0C602752B1C40EA00FA9590 /* PromptAiTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C602742B1C40EA00FA9590 /* PromptAiTestApp.swift */; };
 		C0C602772B1C40EA00FA9590 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C602762B1C40EA00FA9590 /* ContentView.swift */; };
 		C0C602792B1C40EB00FA9590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C602782B1C40EB00FA9590 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0A8584E2B1C75CE00FC8681 /* MobileNetV2 Int8 LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNetV2 Int8 LUT.mlmodel"; sourceTree = "<group>"; };
+		C0A858522B1CE10900FC8681 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0C602712B1C40EA00FA9590 /* PromptAiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PromptAiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C602742B1C40EA00FA9590 /* PromptAiTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptAiTestApp.swift; sourceTree = "<group>"; };
 		C0C602762B1C40EA00FA9590 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				C0C794C52B1C4FC5004B0152 /* SelectedView.swift */,
 				C0C602742B1C40EA00FA9590 /* PromptAiTestApp.swift */,
 				C0C602762B1C40EA00FA9590 /* ContentView.swift */,
+				C0A858522B1CE10900FC8681 /* Extensions.swift */,
+				C0A8584E2B1C75CE00FC8681 /* MobileNetV2 Int8 LUT.mlmodel */,
 				C0C602782B1C40EB00FA9590 /* Assets.xcassets */,
 				C0C6027D2B1C40EB00FA9590 /* Persistence.swift */,
 				C0C6027F2B1C40EB00FA9590 /* PromptAiTest.xcdatamodeld */,
@@ -163,7 +169,9 @@
 				C0C794CA2B1C4FC5004B0152 /* SelectedView.swift in Sources */,
 				C0C794C92B1C4FC5004B0152 /* FolderView.swift in Sources */,
 				C0C602812B1C40EB00FA9590 /* PromptAiTest.xcdatamodeld in Sources */,
+				C0A8584F2B1C75CE00FC8681 /* MobileNetV2 Int8 LUT.mlmodel in Sources */,
 				C0C602772B1C40EA00FA9590 /* ContentView.swift in Sources */,
+				C0A858532B1CE10900FC8681 /* Extensions.swift in Sources */,
 				C0C602752B1C40EA00FA9590 /* PromptAiTestApp.swift in Sources */,
 				C0C794C82B1C4FC5004B0152 /* imageView.swift in Sources */,
 				C0C794C72B1C4FC5004B0152 /* GalleryView.swift in Sources */,

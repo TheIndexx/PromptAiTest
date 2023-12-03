@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import CoreML
 
 struct closeUpImage: View {
     let item: Item
@@ -39,14 +40,39 @@ struct ImageView: View {
     @State private var currentIndex: Int = 0
     @State private var itemsArr: [Item] = []
     @State private var itemsArrDefined = false
+    @State private var results: [String]?
     
     var body: some View {
         VStack {
             Spacer()
             if firstImage {
                 closeUpImage(item: item)
+                if !item.isVideo, let imgData = item.imageData {
+                    Button("Run Object Detection") {
+                        results = analyzeImage(image: UIImage(data: imgData))
+                    }
+                }
             } else {
                 closeUpImage(item: itemsArr[currentIndex])
+                if !itemsArr[currentIndex].isVideo,
+                   let imgData = itemsArr[currentIndex].imageData {
+                    Button("Run Object Detection") {
+                        results = analyzeImage(image: UIImage(data: imgData))
+                    }
+                }
+            }
+            if let results {
+                ForEach(results, id: \.self) { result in
+                    let nlSep = result.components(separatedBy: ",")
+                    if nlSep.count > 1,
+                       let firstC = nlSep.first,
+                       let lastC = nlSep.last,
+                       let val = lastC.components(separatedBy: ": ").last {
+                        Text("\(firstC): \(val)").foregroundStyle(.white)
+                    } else {
+                        Text("\(result)").foregroundStyle(.white)
+                    }
+                }
             }
             Spacer()
         }
@@ -73,12 +99,28 @@ struct ImageView: View {
                 }
         })
         .background(Color.black)
-        .toolbar {
-            ToolbarItem {
-                Button("Text") {
-                    
-                }
-            }
+    }
+    
+    private func analyzeImage(image: UIImage?) -> [String] {
+        guard let buffer = image?.resize(size: CGSize(width: 224, height: 224))?
+                .getCVPixelBuffer() else {
+            return []
+        }
+
+        do {
+            let config = MLModelConfiguration()
+            let model = try MobileNetV2_Int8_LUT(configuration: config)
+            let input = MobileNetV2_Int8_LUTInput(image: buffer)
+
+            let output = try model.prediction(input: input)
+            let predictions = output.classLabelProbs.sorted { $0.value > $1.value }.prefix(5)
+            let text = predictions.map { "\($0.key): \($0.value)" }.joined(separator: "\n")
+            let textSep = text.components(separatedBy: "\n")
+            print(textSep)
+            return textSep
+        }
+        catch {
+            return [error.localizedDescription]
         }
     }
 }
