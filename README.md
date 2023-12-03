@@ -1,4 +1,4 @@
-# PromptAI Coding Challenge
+# Coding Challenge
 
 A media album iOS app. I think I hit all the essential and secondary features, so here I'll just talk a little bit about the components that made this work.
 
